@@ -10,6 +10,8 @@ services:
         value: 20.11.0
       - key: NODE_ENV
         value: production
+      - key: DISABLE_MEDUSA_ADMIN
+        value: true
       - key: PORT
         value: 10000
       - key: DATABASE_URL
@@ -36,6 +38,26 @@ services:
     name: medusa-redis
     plan: free
     ipAllowList: [] # only allow internal connections
+
+staticSites:
+  - name: medusa-admin
+    buildCommand: npm install && npx medusa build
+    publishDir: .medusa/server/public/admin
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DISABLE_MEDUSA_ADMIN
+        value: false
+      - key: MEDUSA_BACKEND_URL
+        fromService:
+          type: web
+          name: medusa-backend
+          property: url
+      - key: MEDUSA_ADMIN_BACKEND_URL
+        fromService:
+          type: web
+          name: medusa-backend
+          property: url
 
 databases:
   - name: medusa-db
