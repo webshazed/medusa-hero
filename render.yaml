@@ -30,14 +30,13 @@ services:
       - key: AUTH_CORS
         value: /.*/
 
+  - type: redis
+    name: medusa-redis
+    plan: free
+    ipAllowList: [] # only allow internal connections
+
 databases:
   - name: medusa-db
     plan: free
     databaseName: medusa
     user: medusa
-
-services:
-  - type: redis
-    name: medusa-redis
-    plan: free
-    ipAllowList: [] # only allow internal connections
