@@ -53,12 +53,12 @@ services:
         fromService:
           type: web
           name: medusa-backend
-          property: url
+          property: host
       - key: MEDUSA_ADMIN_BACKEND_URL
         fromService:
           type: web
           name: medusa-backend
-          property: url
+          property: host
 
 databases:
   - name: medusa-db
