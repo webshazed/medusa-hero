@@ -1,28 +1,21 @@
 import { loadEnv, defineConfig } from '@medusajs/framework/utils'
-import fs from 'fs'
-import path from 'path'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
-module.exports = defineConfig({
+export default defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
-    databaseDriverOptions: {
-      connection: {
-        ssl: {
-          rejectUnauthorized: false,
-        },
-      },
-    },
-    redisUrl: process.env.REDIS_URL,
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
-    },
-    workerMode: process.env.MEDUSA_WORKER_MODE as "shared" | "worker" | "server" | undefined,
+    }
+  },
+  admin: {
+    path: "/",
+    disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
   },
   modules: [
     {
@@ -30,20 +23,22 @@ module.exports = defineConfig({
       options: {
         providers: [
           {
-            resolve: "@medusajs/medusa/file-local",
-            id: "local",
+            resolve: "@medusajs/file-s3",
+            id: "s3",
             options: {
-              backend_url: process.env.BACKEND_URL || "http://localhost:9000",
+              file_url: process.env.S3_FILE_URL,
+              access_key_id: process.env.S3_ACCESS_KEY_ID,
+              secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+              region: "auto",
+              bucket: process.env.S3_BUCKET,
+              endpoint: process.env.S3_ENDPOINT,
+              additional_data: {
+                cache_control: "public, max-age=31536000, immutable",
+              },
             },
           },
         ],
       },
     },
   ],
-  admin: {
-    // CRITICAL FIX FOR VERCEL WHITE SCREEN:
-    path: "/",
-    // KEEP THIS: Ensure you set DISABLE_MEDUSA_ADMIN="true" in your Render Environment Variables!
-    disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
-  }
 })
