@@ -21,9 +21,29 @@ module.exports = defineConfig({
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
-    }
+    },
+    workerMode: process.env.MEDUSA_WORKER_MODE as "shared" | "worker" | "server" | undefined,
   },
+  modules: [
+    {
+      resolve: "@medusajs/medusa/file",
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/medusa/file-local",
+            id: "local",
+            options: {
+              backend_url: process.env.BACKEND_URL || "http://localhost:9000",
+            },
+          },
+        ],
+      },
+    },
+  ],
   admin: {
+    // CRITICAL FIX FOR VERCEL WHITE SCREEN:
+    path: "/",
+    // KEEP THIS: Ensure you set DISABLE_MEDUSA_ADMIN="true" in your Render Environment Variables!
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
   }
 })
