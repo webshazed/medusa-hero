@@ -3,8 +3,8 @@ services:
     name: medusa-backend
     env: node
     plan: free
-    buildCommand: npm install && npm run build
-    startCommand: npx medusa db:migrate && npm run start
+    buildCommand: npm install && npx medusa build
+    startCommand: npx medusa db:migrate && npx medusa start
     envVars:
       - key: NODE_VERSION
         value: 20.11.0
