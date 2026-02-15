@@ -39,10 +39,11 @@ services:
     plan: free
     ipAllowList: [] # only allow internal connections
 
-  - type: static
+  - type: web
     name: medusa-admin
+    env: static
     buildCommand: npm install && npx medusa build
-    publishDir: .medusa/server/public/admin
+    staticPublishPath: .medusa/server/public/admin
     envVars:
       - key: NODE_ENV
         value: production
