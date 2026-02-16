@@ -40,5 +40,20 @@ export default defineConfig({
         ],
       },
     },
+    {
+      resolve: "@medusajs/medusa/payment",
+      options: {
+        providers: [
+          {
+            resolve: "./src/modules/sumup-payment",
+            id: "sumup",
+            options: {
+              api_key: process.env.SUMUP_API_KEY,
+              merchant_code: process.env.SUMUP_MERCHANT_CODE,
+            },
+          },
+        ],
+      },
+    },
   ],
 })

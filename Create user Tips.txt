@@ -1,4 +1,4 @@
-$env:DATABASE_URL = "postgresql://medusa:fpKjUbE5fXDZqdcWJjB40i5P4JCtpU5v@dpg-d68q450gjchc73ddb2m0-a.oregon-postgres.render.com/medusa_2xhv"
+$env:DATABASE_URL = "postgresql://medusa:geKkQcKKrGlPykxSgLODFPWHuLPh7xgi@dpg-d69cmrhr0fns7381et40-a.oregon-postgres.render.com/medusa_q9lu"
 
 
-npx medusa user -e shazed.uk@gmail.com -p 1234Xxxx
+npx medusa user -e contact@weareturncoat.com/ -p Liverpool#2026

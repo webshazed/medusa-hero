@@ -27,6 +27,7 @@
     "@medusajs/file-s3": "^2.13.1",
     "@medusajs/framework": "2.13.1",
     "@medusajs/medusa": "2.13.1",
+    "@sumup/sdk": "^0.0.13",
     "@swc/core": "^1.7.28",
     "@types/node": "^20.12.11",
     "pg": "^8.18.0",
