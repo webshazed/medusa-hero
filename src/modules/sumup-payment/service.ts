@@ -47,6 +47,7 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
     }
 
     static validateOptions(options: Record<any, any>) {
+        console.log("[DEBUG] SumUpPaymentProviderService.validateOptions called with:", JSON.stringify(options));
         if (!options.api_key) {
             throw new Error("SumUp API key is required in the provider's options.")
         }
