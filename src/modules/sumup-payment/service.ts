@@ -42,6 +42,8 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
         super(container, options)
         this.logger_ = container.logger
         this.options_ = options
+        this.logger_.info("[DEBUG] SumUpPaymentProviderService initialized");
+        console.log("[DEBUG] SumUpPaymentProviderService constructor called");
     }
 
     static validateOptions(options: Record<any, any>) {
