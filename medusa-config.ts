@@ -1,5 +1,6 @@
 import { loadEnv, defineConfig } from '@medusajs/framework/utils'
 import path from "path"
+import fs from "fs"
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
@@ -49,12 +50,31 @@ export default defineConfig({
         providers: [
           {
             resolve: (() => {
-              const paymentModule = process.env.NODE_ENV === "production"
-                ? path.resolve(process.cwd(), ".medusa/server/src/modules/sumup-payment")
-                : path.resolve(__dirname, "src/modules/sumup-payment")
+              const debug = (msg: string) => console.log(`[DEBUG] ${msg}`);
+              debug(`NODE_ENV: ${process.env.NODE_ENV}`);
+              debug(`CWD: ${process.cwd()}`);
+              debug(`__dirname: ${__dirname}`);
 
-              console.log("Loading SumUp Module from:", paymentModule)
-              return paymentModule
+              // Check potential paths
+              const localPath = path.resolve(__dirname, "src/modules/sumup-payment");
+              const buildPath = path.resolve(process.cwd(), ".medusa/server/src/modules/sumup-payment");
+
+              debug(`Checking localPath: ${localPath} (Exists: ${fs.existsSync(localPath)})`);
+              debug(`Checking buildPath: ${buildPath} (Exists: ${fs.existsSync(buildPath)})`);
+
+              if (process.env.NODE_ENV === "production") {
+                if (fs.existsSync(buildPath)) {
+                  debug(`Using buildPath`);
+                  return buildPath;
+                }
+                if (fs.existsSync(localPath)) {
+                  debug(`Using localPath (fallback)`);
+                  return localPath;
+                }
+              }
+
+              // Default to local for dev or fallback
+              return localPath;
             })(),
             id: "sumup",
             options: {
