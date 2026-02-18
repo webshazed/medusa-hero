@@ -1,4 +1,5 @@
 import { loadEnv, defineConfig } from '@medusajs/framework/utils'
+import path from "path"
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
@@ -47,7 +48,7 @@ export default defineConfig({
       options: {
         providers: [
           {
-            resolve: process.env.NODE_ENV === "production" ? "./.medusa/server/src/modules/sumup-payment" : "./src/modules/sumup-payment",
+            resolve: path.resolve(__dirname, "src/modules/sumup-payment"),
             id: "sumup",
             options: {
               api_key: process.env.SUMUP_API_KEY,
