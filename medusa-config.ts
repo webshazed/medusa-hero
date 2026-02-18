@@ -48,7 +48,14 @@ export default defineConfig({
       options: {
         providers: [
           {
-            resolve: path.resolve(__dirname, "src/modules/sumup-payment"),
+            resolve: (() => {
+              const paymentModule = process.env.NODE_ENV === "production"
+                ? path.resolve(process.cwd(), ".medusa/server/src/modules/sumup-payment")
+                : path.resolve(__dirname, "src/modules/sumup-payment")
+
+              console.log("Loading SumUp Module from:", paymentModule)
+              return paymentModule
+            })(),
             id: "sumup",
             options: {
               api_key: process.env.SUMUP_API_KEY,
