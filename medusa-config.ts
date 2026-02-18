@@ -5,6 +5,8 @@ loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 export default defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
+    redisUrl: process.env.REDIS_URL,
+    workerMode: process.env.WORKER_MODE as "shared" | "worker" | "server",
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
@@ -45,7 +47,7 @@ export default defineConfig({
       options: {
         providers: [
           {
-            resolve: "./src/modules/sumup-payment",
+            resolve: process.env.NODE_ENV === "production" ? "./.medusa/server/src/modules/sumup-payment" : "./src/modules/sumup-payment",
             id: "sumup",
             options: {
               api_key: process.env.SUMUP_API_KEY,
