@@ -45,7 +45,7 @@ export default defineConfig({
       },
     },
     {
-      resolve: "@medusajs/medusa/payment",
+      resolve: "@medusajs/payment",
       options: {
         providers: [
           {
