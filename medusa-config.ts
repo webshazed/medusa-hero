@@ -49,33 +49,7 @@ export default defineConfig({
       options: {
         providers: [
           {
-            resolve: (() => {
-              const debug = (msg: string) => console.log(`[DEBUG] ${msg}`);
-              debug(`NODE_ENV: ${process.env.NODE_ENV}`);
-              debug(`CWD: ${process.cwd()}`);
-              debug(`__dirname: ${__dirname}`);
-
-              // Check potential paths
-              const localPath = path.resolve(__dirname, "src/modules/sumup-payment");
-              const buildPath = path.resolve(process.cwd(), ".medusa/server/src/modules/sumup-payment");
-
-              debug(`Checking localPath: ${localPath} (Exists: ${fs.existsSync(localPath)})`);
-              debug(`Checking buildPath: ${buildPath} (Exists: ${fs.existsSync(buildPath)})`);
-
-              if (process.env.NODE_ENV === "production") {
-                if (fs.existsSync(buildPath)) {
-                  debug(`Using buildPath`);
-                  return buildPath;
-                }
-                if (fs.existsSync(localPath)) {
-                  debug(`Using localPath (fallback)`);
-                  return localPath;
-                }
-              }
-
-              // Default to local for dev or fallback
-              return localPath;
-            })(),
+            resolve: "./src/modules/sumup-payment",
             id: "sumup",
             options: {
               api_key: process.env.SUMUP_API_KEY,
