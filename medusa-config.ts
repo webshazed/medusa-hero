@@ -21,8 +21,8 @@ export default defineConfig({
     }
   },
   admin: {
-    path: "/",
-    disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
+    path: "/app",
+    disable: false,
   },
   modules: [
     {

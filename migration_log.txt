@@ -1,0 +1,184 @@
+{"level":"info","message":"No link to load from E:\\Last Windows Backup desktop\\New folder (4)\\herocosmetics\\Medusa_backend\\node_modules\\@medusajs\\draft-order\\.medusa\\server\\src\\links. skipped.","timestamp":"2026-02-19 19:49:14"}
+{"level":"info","message":"Running migrations...","timestamp":"2026-02-19 19:49:14"}
+[DEBUG] Loading SumUp Module index.ts
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: stock_location","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: inventory","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: product","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: pricing","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: promotion","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: customer","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: sales_channel","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: cart","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: region","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: api_key","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: store","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: tax","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: currency","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: payment","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: payment","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: payment","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"MODULE: order","timestamp":"2026-02-19 19:49:15"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: settings","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: auth","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: auth","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: auth","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: user","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: fulfillment","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: fulfillment","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: fulfillment","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: notification","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: notification","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: notification","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: cache","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: event_bus","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: workflows","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: locking","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: file","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: file","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"MODULE: file","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Skipped. Database is up-to-date for module.","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Migrations completed","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Syncing links...","timestamp":"2026-02-19 19:49:16"}
+{"level":"info","message":"Database already up-to-date","timestamp":"2026-02-19 19:49:18"}
+{"level":"info","message":"","timestamp":"2026-02-19 19:49:18"}
+{"level":"info","message":"No link to load from E:\\Last Windows Backup desktop\\New folder (4)\\herocosmetics\\Medusa_backend\\node_modules\\@medusajs\\draft-order\\.medusa\\server\\src\\links. skipped.","timestamp":"2026-02-19 19:49:20"}
+[DEBUG] Loading SumUp Module index.ts
+{"level":"warn","message":"Local Event Bus installed. This is not recommended for production.","timestamp":"2026-02-19 19:49:20"}
+{"level":"info","message":"Locking module: Using \"in-memory\" as default.","timestamp":"2026-02-19 19:49:20"}
+{"level":"warn","message":"Failed to load countries, skipping loader. Original error: select \"c0\".*, \"c0\".\"region_id\" as \"region_id\", \"r1\".\"id\" as \"r1__id\", \"r2\".\"id\" as \"r2__id\" from \"region_country\" as \"c0\" left join \"region\" as \"r1\" on \"c0\".\"region_id\" = \"r1\".\"id\" and \"r1\".\"deleted_at\" is null left join \"region\" as \"r2\" on \"c0\".\"region_id\" = \"r2\".\"id\" and \"r2\".\"deleted_at\" is null where \"c0\".\"deleted_at\" is null and \"c0\".\"iso_2\" in ('af', 'al', 'dz', 'as', 'ad', 'ao', 'ai', 'aq', 'ag', 'ar', 'am', 'aw', 'au', 'at', 'az', 'bs', 'bh', 'bd', 'bb', 'by', 'be', 'bz', 'bj', 'bm', 'bt', 'bo', 'bq', 'ba', 'bw', 'bv', 'br', 'io', 'bn', 'bg', 'bf', 'bi', 'kh', 'cm', 'ca', 'cv', 'ky', 'cf', 'td', 'cl', 'cn', 'cx', 'cc', 'co', 'km', 'cg', 'cd', 'ck', 'cr', 'ci', 'hr', 'cu', 'cw', 'cy', 'cz', 'dk', 'dj', 'dm', 'do', 'ec', 'eg', 'sv', 'gq', 'er', 'ee', 'et', 'fk', 'fo', 'fj', 'fi', 'fr', 'gf', 'pf', 'tf', 'ga', 'gm', 'ge', 'de', 'gh', 'gi', 'gr', 'gl', 'gd', 'gp', 'gu', 'gt', 'gg', 'gn', 'gw', 'gy', 'ht', 'hm', 'va', 'hn', 'hk', 'hu', 'is', 'in', 'id', 'ir', 'iq', 'ie', 'im', 'il', 'it', 'jm', 'jp', 'je', 'jo', 'kz', 'ke', 'ki', 'kp', 'kr', 'xk', 'kw', 'kg', 'la', 'lv', 'lb', 'ls', 'lr', 'ly', 'li', 'lt', 'lu', 'mo', 'mg', 'mw', 'my', 'mv', 'ml', 'mt', 'mh', 'mq', 'mr', 'mu', 'yt', 'mx', 'fm', 'md', 'mc', 'mn', 'me', 'ms', 'ma', 'mz', 'mm', 'na', 'nr', 'np', 'nl', 'nc', 'nz', 'ni', 'ne', 'ng', 'nu', 'nf', 'mk', 'mp', 'no', 'om', 'pk', 'pw', 'ps', 'pa', 'pg', 'py', 'pe', 'ph', 'pn', 'pl', 'pt', 'pr', 'qa', 're', 'ro', 'ru', 'rw', 'bl', 'sh', 'kn', 'lc', 'mf', 'pm', 'vc', 'ws', 'sm', 'st', 'sa', 'sn', 'rs', 'sc', 'sl', 'sg', 'sx', 'sk', 'si', 'sb', 'so', 'za', 'gs', 'ss', 'es', 'lk', 'sd', 'sr', 'sj', 'sz', 'se', 'ch', 'sy', 'tw', 'tj', 'tz', 'th', 'tl', 'tg', 'tk', 'to', 'tt', 'tn', 'tr', 'tm', 'tc', 'tv', 'ug', 'ua', 'ae', 'gb', 'us', 'um', 'uy', 'uz', 'vu', 've', 'vn', 'vg', 'vi', 'wf', 'eh', 'ye', 'zm', 'zw', 'ax') - relation \"region_country\" does not exist","timestamp":"2026-02-19 19:49:20"}
+{"level":"error","message":"Loaders for module Tax failed with the following error: \n{\"code\":\"42P01\",\"length\":111,\"name\":\"TableNotFoundException\",\"severity\":\"ERROR\",\"position\":\"20\",\"file\":\"parse_relation.c\",\"line\":\"1469\",\"routine\":\"parserOpenTable\"}","timestamp":"2026-02-19 19:49:20"}
+{"level":"error","message":"Could not resolve module: Tax. Error: Loaders for module Tax failed: select \"t0\".* from \"tax_provider\" as \"t0\" where \"t0\".\"deleted_at\" is null and \"t0\".\"id\" in ('tp_system') order by \"t0\".\"id\" asc - relation \"tax_provider\" does not exist\r\n","timestamp":"2026-02-19 19:49:20"}
+Error: Loaders for module Tax failed: select "t0".* from "tax_provider" as "t0" where "t0"."deleted_at" is null and "t0"."id" in ('tp_system') order by "t0"."id" asc - relation "tax_provider" does not exist
+    at runLoaders (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\modules-sdk\src\loaders\utils\load-internal.ts:735:14)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async loadInternalModule (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\modules-sdk\src\loaders\utils\load-internal.ts:318:17)
+    at async loadModule (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\modules-sdk\src\loaders\module-loader.ts:92:10)
+    at async Promise.allSettled (index 0)
+    at async promiseAll (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\utils\src\common\promise-all.ts:27:18)
+    at async moduleLoader (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\modules-sdk\src\loaders\module-loader.ts:24:19)
+    at async E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\modules-sdk\src\medusa-module.ts:512:11
+    at async Promise.allSettled (index 11)
+    at async promiseAll (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\utils\src\common\promise-all.ts:27:18)
+{"level":"warn","message":"Failed to load currencies, skipping loader. Original error: select \"c0\".* from \"currency\" as \"c0\" where \"c0\".\"deleted_at\" is null and \"c0\".\"code\" in ('usd', 'cad', 'eur', 'aed', 'afn', 'all', 'amd', 'ars', 'aud', 'azn', 'bam', 'bdt', 'bgn', 'bhd', 'bif', 'bnd', 'bob', 'brl', 'bwp', 'byn', 'bzd', 'cdf', 'chf', 'clp', 'cny', 'cop', 'crc', 'cve', 'czk', 'djf', 'dkk', 'dop', 'dzd', 'eek', 'egp', 'ern', 'etb', 'gbp', 'gel', 'ghs', 'gnf', 'gtq', 'hkd', 'hnl', 'hrk', 'huf', 'idr', 'ils', 'inr', 'iqd', 'irr', 'isk', 'jmd', 'jod', 'jpy', 'kes', 'khr', 'kmf', 'krw', 'kwd', 'kzt', 'lbp', 'lkr', 'ltl', 'lvl', 'lyd', 'mad', 'mdl', 'mga', 'mkd', 'mmk', 'mnt', 'mop', 'mur', 'mwk', 'mxn', 'myr', 'mzn', 'nad', 'ngn', 'nio', 'nok', 'npr', 'nzd', 'omr', 'pab', 'pen', 'php', 'pkr', 'pln', 'pyg', 'qar', 'ron', 'rsd', 'rub', 'rwf', 'sar', 'sdg', 'sek', 'sgd', 'sos', 'syp', 'thb', 'tnd', 'top', 'tjs', 'try', 'ttd', 'twd', 'tzs', 'uah', 'ugx', 'uyu', 'uzs', 'vef', 'vnd', 'xaf', 'xof', 'xpf', 'yer', 'zar', 'zmk', 'zwl') - relation \"currency\" does not exist","timestamp":"2026-02-19 19:49:20"}
+{"level":"error","message":"Loaders for module Payment failed with the following error: \n{\"code\":\"42P01\",\"length\":115,\"name\":\"TableNotFoundException\",\"severity\":\"ERROR\",\"position\":\"20\",\"file\":\"parse_relation.c\",\"line\":\"1469\",\"routine\":\"parserOpenTable\"}","timestamp":"2026-02-19 19:49:20"}
+{"level":"error","message":"Could not resolve module: Payment. Error: Loaders for module Payment failed: select \"p0\".* from \"payment_provider\" as \"p0\" where \"p0\".\"deleted_at\" is null and \"p0\".\"id\" in ('pp_sumup_sumup', 'pp_system_default') order by \"p0\".\"id\" asc - relation \"payment_provider\" does not exist\r\n","timestamp":"2026-02-19 19:49:20"}
+Error: Loaders for module Payment failed: select "p0".* from "payment_provider" as "p0" where "p0"."deleted_at" is null and "p0"."id" in ('pp_sumup_sumup', 'pp_system_default') order by "p0"."id" asc - relation "payment_provider" does not exist
+    at runLoaders (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\modules-sdk\src\loaders\utils\load-internal.ts:735:14)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async loadInternalModule (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\modules-sdk\src\loaders\utils\load-internal.ts:318:17)
+    at async loadModule (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\modules-sdk\src\loaders\module-loader.ts:92:10)
+    at async Promise.allSettled (index 0)
+    at async promiseAll (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\utils\src\common\promise-all.ts:27:18)
+    at async moduleLoader (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\modules-sdk\src\loaders\module-loader.ts:24:19)
+    at async E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\modules-sdk\src\medusa-module.ts:512:11
+    at async Promise.allSettled (index 13)
+    at async promiseAll (E:\Last Windows Backup desktop\New folder (4)\herocosmetics\Medusa_backend\node_modules\@medusajs\utils\src\common\promise-all.ts:27:18)
+{"level":"error","message":"Error syncing the fulfillment providers: select \"f0\".* from \"fulfillment_provider\" as \"f0\" where \"f0\".\"deleted_at\" is null order by \"f0\".\"id\" asc - relation \"fulfillment_provider\" does not exist","timestamp":"2026-02-19 19:49:20"}
+{"level":"error","message":"Error syncing the notification providers: select \"n0\".* from \"notification_provider\" as \"n0\" where \"n0\".\"deleted_at\" is null order by \"n0\".\"id\" asc - relation \"notification_provider\" does not exist","timestamp":"2026-02-19 19:49:20"}
+{"level":"error","message":"Loaders for module Tax failed: select \"t0\".* from \"tax_provider\" as \"t0\" where \"t0\".\"deleted_at\" is null and \"t0\".\"id\" in ('tp_system') order by \"t0\".\"id\" asc - relation \"tax_provider\" does not exist","stack":[{"columnNumber":14,"fileName":"4)\\herocosmetics\\Medusa_backend\\node_modules\\@medusajs\\modules-sdk\\src\\loaders\\utils\\load-internal.ts","functionName":"runLoaders (E:\\Last Windows Backup desktop\\New folder","lineNumber":735,"methodName":null,"native":false,"typeName":null},{"columnNumber":5,"fileName":"node:internal/process/task_queues","functionName":"processTicksAndRejections","lineNumber":103,"methodName":null,"native":false,"typeName":null},{"columnNumber":17,"fileName":"4)\\herocosmetics\\Medusa_backend\\node_modules\\@medusajs\\modules-sdk\\src\\loaders\\utils\\load-internal.ts","functionName":"async loadInternalModule (E:\\Last Windows Backup desktop\\New folder","lineNumber":318,"methodName":null,"native":false,"typeName":null},{"columnNumber":10,"fileName":"4)\\herocosmetics\\Medusa_backend\\node_modules\\@medusajs\\modules-sdk\\src\\loaders\\module-loader.ts","functionName":"async loadModule (E:\\Last Windows Backup desktop\\New folder","lineNumber":92,"methodName":null,"native":false,"typeName":null},{"columnNumber":null,"fileName":null,"functionName":"async Promise.allSettled","lineNumber":null,"methodName":"allSettled","native":false,"typeName":"async Promise"},{"columnNumber":18,"fileName":"4)\\herocosmetics\\Medusa_backend\\node_modules\\@medusajs\\utils\\src\\common\\promise-all.ts","functionName":"async promiseAll (E:\\Last Windows Backup desktop\\New folder","lineNumber":27,"methodName":null,"native":false,"typeName":null},{"columnNumber":19,"fileName":"4)\\herocosmetics\\Medusa_backend\\node_modules\\@medusajs\\modules-sdk\\src\\loaders\\module-loader.ts","functionName":"async moduleLoader (E:\\Last Windows Backup desktop\\New folder","lineNumber":24,"methodName":null,"native":false,"typeName":null},{"columnNumber":11,"fileName":"4)\\herocosmetics\\Medusa_backend\\node_modules\\@medusajs\\modules-sdk\\src\\medusa-module.ts","functionName":"async E:\\Last Windows Backup desktop\\New folder","lineNumber":512,"methodName":null,"native":false,"typeName":null},{"columnNumber":null,"fileName":null,"functionName":"async Promise.allSettled","lineNumber":null,"methodName":"allSettled","native":false,"typeName":"async Promise"},{"columnNumber":18,"fileName":"4)\\herocosmetics\\Medusa_backend\\node_modules\\@medusajs\\utils\\src\\common\\promise-all.ts","functionName":"async promiseAll (E:\\Last Windows Backup desktop\\New folder","lineNumber":27,"methodName":null,"native":false,"typeName":null}],"timestamp":"2026-02-19 19:49:20"}
