@@ -21,8 +21,7 @@ export default defineConfig({
     }
   },
   admin: {
-    path: "/app",
-    disable: false,
+    disable: true,
   },
   modules: [
     {
