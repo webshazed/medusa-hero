@@ -49,7 +49,19 @@ export default defineConfig({
       options: {
         providers: [
           {
-            resolve: "./src/modules/sumup-payment",
+            resolve: (() => {
+              // Check potential paths
+              const localPath = path.resolve(__dirname, "src/modules/sumup-payment");
+              const buildPath = path.resolve(process.cwd(), ".medusa/server/src/modules/sumup-payment");
+
+              if (process.env.NODE_ENV === "production" && fs.existsSync(buildPath)) {
+                console.log(`[DEBUG] Using buildPath for SumUp: ${buildPath}`);
+                return buildPath;
+              }
+
+              console.log(`[DEBUG] Using localPath for SumUp: ${localPath}`);
+              return localPath;
+            })(),
             id: "sumup",
             options: {
               api_key: process.env.SUMUP_API_KEY,
