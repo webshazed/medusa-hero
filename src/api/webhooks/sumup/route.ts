@@ -15,7 +15,9 @@ export async function POST(
   const logger = req.scope.resolve(ContainerRegistrationKeys.LOGGER);
   
   try {
-    const { event_type, id } = req.body;
+    const body = req.body as Record<string, unknown>;
+    const event_type = body.event_type as string;
+    const id = body.id as string;
 
     logger.info(`[SumUp Webhook] Received event: ${event_type}, checkout_id: ${id}`);
 
