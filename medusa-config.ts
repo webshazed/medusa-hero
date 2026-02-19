@@ -8,6 +8,9 @@ export default defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     redisUrl: process.env.REDIS_URL,
+    databaseDriverOptions: {
+      connection: { ssl: { rejectUnauthorized: false } },
+    },
     workerMode: process.env.WORKER_MODE as "shared" | "worker" | "server",
     http: {
       storeCors: process.env.STORE_CORS!,
