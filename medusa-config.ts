@@ -27,6 +27,9 @@ export default defineConfig({
   },
   modules: [
     {
+      resolve: "./src/modules/category-bundle-config",
+    },
+    {
       resolve: "@medusajs/medusa/file",
       options: {
         providers: [
@@ -67,6 +70,28 @@ export default defineConfig({
             options: {
               api_key: process.env.SUMUP_API_KEY,
               merchant_code: process.env.SUMUP_MERCHANT_CODE,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: "@medusajs/medusa/notification",
+      options: {
+        providers: [
+          {
+            resolve: "@perseidesjs/notification-nodemailer/providers/nodemailer",
+            id: "nodemailer",
+            options: {
+              from: process.env.SMTP_FROM,
+              channels: ["email"],
+              host: process.env.SMTP_HOST,
+              port: Number(process.env.SMTP_PORT) || 587,
+              secure: false,
+              auth: {
+                user: process.env.SMTP_USER,
+                pass: process.env.SMTP_PASS,
+              },
             },
           },
         ],
