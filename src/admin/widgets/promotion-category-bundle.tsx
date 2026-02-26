@@ -29,10 +29,14 @@ const CategoryBundleWidget = ({ data }: DetailWidgetProps<AdminPromotion>) => {
         // Fetch categories for the dropdown
         const fetchCategories = async () => {
             try {
-                const response = await sdk.admin.productCategory.list({ limit: 100 })
+                // Use the raw fetch client to be absolutely certain of the API payload
+                const response = await sdk.client.fetch(`/admin/product-categories?limit=100`, {
+                    method: "GET"
+                })
                 setCategories(response.product_categories || [])
             } catch (err) {
-                console.error("Failed to fetch categories", err)
+                console.error("Failed to fetch product categories:", err)
+                toast.error("Failed to load categories")
             }
         }
 
