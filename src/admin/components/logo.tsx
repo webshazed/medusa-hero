@@ -1,14 +1,14 @@
 import React from "react"
 
-export const Logo = () => {
+const Logo = () => {
     return (
         <img
             src="/Logo.png"
             alt="Turncoat Admin"
             style={{
-                width: "32px",
-                height: "32px",
-                objectFit: "contain"
+                width: "100%",
+                height: "auto",
+                maxWidth: "180px"
             }}
         />
     )

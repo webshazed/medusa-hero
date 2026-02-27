@@ -1,7 +1,7 @@
+import en from "./json/en.json"
+
 export default {
     en: {
-        login: {
-            title: "Welcome to Turncoat Admin",
-        },
+        translation: en,
     },
 }
