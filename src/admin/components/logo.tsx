@@ -3,7 +3,7 @@ import React from "react"
 const Logo = () => {
     return (
         <img
-            src="/Logo.png"
+            src="/logo.svg"
             alt="Turncoat Admin"
             style={{
                 width: "100%",
