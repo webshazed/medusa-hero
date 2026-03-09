@@ -30,7 +30,7 @@ const CategoryBundleWidget = ({ data }: DetailWidgetProps<AdminPromotion>) => {
         const fetchCategories = async () => {
             try {
                 // Use the raw fetch client to be absolutely certain of the API payload
-                const response = await sdk.client.fetch(`/admin/product-categories?limit=100&fields=*`, {
+                const response = await sdk.client.fetch(`/admin/product-categories?limit=100`, {
                     method: "GET"
                 })
                 setCategories(response.product_categories || [])
