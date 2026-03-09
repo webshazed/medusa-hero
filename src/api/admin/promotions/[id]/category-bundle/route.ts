@@ -61,7 +61,7 @@ export async function POST(
     const categoryBundleService: CategoryBundleConfigModuleService =
         req.scope.resolve(CATEGORY_BUNDLE_CONFIG_MODULE)
     const query = req.scope.resolve(ContainerRegistrationKeys.QUERY)
-    const linkService: any = req.scope.resolve(Modules.LINK)
+    const linkService: any = req.scope.resolve("remoteLink")
 
     // Check if a config already exists
     let existingConfig: any = null

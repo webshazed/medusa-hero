@@ -13,7 +13,7 @@ updatePromotionsWorkflow.hooks.promotionsUpdated(
         const categoryBundleService: CategoryBundleConfigModuleService =
             container.resolve(CATEGORY_BUNDLE_CONFIG_MODULE)
         const query = container.resolve(ContainerRegistrationKeys.QUERY)
-        const linkService: any = container.resolve(Modules.LINK)
+        const linkService: any = container.resolve("remoteLink")
 
         for (const promotion of promotions) {
             // Check if a config already exists for this promotion
