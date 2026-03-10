@@ -42,7 +42,7 @@ export default defineConfig({
   },
   modules: [
     {
-      resolve: "@medusajs/medusa/event-bus-redis",
+      resolve: "@medusajs/event-bus-redis",
       options: {
         redisUrl: process.env.REDIS_URL,
         redisOptions: {
@@ -56,7 +56,7 @@ export default defineConfig({
       },
     },
     {
-      resolve: "@medusajs/medusa/cache-redis",
+      resolve: "@medusajs/cache-redis",
       options: {
         redisUrl: process.env.REDIS_URL,
         redisOptions: {
