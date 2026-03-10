@@ -15,12 +15,13 @@ export default defineConfig({
     },
     databaseDriverOptions: {
       connection: { ssl: { rejectUnauthorized: false } },
-      // Add these for better performance
+      // Ensure the pool doesn't collapse under load
       pool: {
         min: 2,
-        max: 10,
-        idleTimeoutMillis: 30000,
-      }
+        max: 15,
+      },
+      // Higher timeout for slow cold-boots
+      connectionTimeoutMillis: 5000,
     },
     workerMode: process.env.WORKER_MODE as "shared" | "worker" | "server",
     http: {
@@ -37,17 +38,7 @@ export default defineConfig({
     backendUrl: process.env.BACKEND_URL || (process.env.NODE_ENV === "development" ? "http://localhost:9000" : "https://medusa-backend-xw2f.onrender.com"),
   },
   modules: [
-    {
-      resolve: "@medusajs/medusa/event-bus-redis",
-      options: {
-        redisUrl: process.env.EVENTS_REDIS_URL || process.env.REDIS_URL,
-        redisOptions: {
-          tls: {
-            rejectUnauthorized: false
-          }
-        }
-      }
-    },
+
     {
       resolve: "./src/modules/category-bundle-config",
     },
