@@ -10,10 +10,11 @@ export default defineConfig({
     redisUrl: process.env.REDIS_URL,
     redisOptions: {
       family: 4,
-      connectTimeout: 10000,
       tls: {
         rejectUnauthorized: false
-      }
+      },
+      connectTimeout: 20000,
+      keepAlive: 10000,
     },
     databaseDriverOptions: {
       connection: { ssl: { rejectUnauthorized: false } },
