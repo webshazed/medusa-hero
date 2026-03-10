@@ -12,6 +12,9 @@ export default defineConfig({
       family: 4,
       connectTimeout: 20000,
       keepAlive: 10000,
+      tls: {
+        rejectUnauthorized: false,
+      },
     },
     databaseDriverOptions: {
       connection: { ssl: { rejectUnauthorized: false } },
