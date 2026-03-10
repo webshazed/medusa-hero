@@ -10,6 +10,12 @@ export default defineConfig({
     redisUrl: process.env.REDIS_URL,
     databaseDriverOptions: {
       connection: { ssl: { rejectUnauthorized: false } },
+      // Add these for better performance
+      pool: {
+        min: 2,
+        max: 10,
+        idleTimeoutMillis: 30000,
+      }
     },
     workerMode: process.env.WORKER_MODE as "shared" | "worker" | "server",
     http: {
@@ -22,8 +28,8 @@ export default defineConfig({
   },
   admin: {
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
-    path: "/",
-    backendUrl: process.env.BACKEND_URL || "https://medusa-backend-xw2f.onrender.com",
+    path: "/app",
+    backendUrl: process.env.BACKEND_URL || (process.env.NODE_ENV === "development" ? "http://localhost:9000" : "https://medusa-backend-xw2f.onrender.com"),
   },
   modules: [
     {
