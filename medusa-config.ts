@@ -8,6 +8,11 @@ export default defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     redisUrl: process.env.REDIS_URL,
+    redisOptions: {
+      tls: {
+        rejectUnauthorized: false
+      }
+    },
     databaseDriverOptions: {
       connection: { ssl: { rejectUnauthorized: false } },
       // Add these for better performance
@@ -32,6 +37,17 @@ export default defineConfig({
     backendUrl: process.env.BACKEND_URL || (process.env.NODE_ENV === "development" ? "http://localhost:9000" : "https://medusa-backend-xw2f.onrender.com"),
   },
   modules: [
+    {
+      resolve: "@medusajs/medusa/event-bus-redis",
+      options: {
+        redisUrl: process.env.EVENTS_REDIS_URL || process.env.REDIS_URL,
+        redisOptions: {
+          tls: {
+            rejectUnauthorized: false
+          }
+        }
+      }
+    },
     {
       resolve: "./src/modules/category-bundle-config",
     },
