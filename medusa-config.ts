@@ -38,7 +38,39 @@ export default defineConfig({
     backendUrl: process.env.BACKEND_URL || (process.env.NODE_ENV === "development" ? "http://localhost:9000" : "https://medusa-backend-xw2f.onrender.com"),
   },
   modules: [
-
+    {
+      resolve: "@medusajs/medusa/event-bus-redis",
+      options: {
+        redisUrl: process.env.EVENTS_REDIS_URL || process.env.REDIS_URL,
+        redisOptions: {
+          tls: {
+            rejectUnauthorized: false
+          }
+        }
+      }
+    },
+    {
+      resolve: "@medusajs/medusa/cache-redis",
+      options: {
+        redisUrl: process.env.CACHE_REDIS_URL || process.env.REDIS_URL,
+        redisOptions: {
+          tls: {
+            rejectUnauthorized: false
+          }
+        }
+      }
+    },
+    {
+      resolve: "@medusajs/medusa/locking-redis",
+      options: {
+        redisUrl: process.env.LOCKING_REDIS_URL || process.env.REDIS_URL,
+        redisOptions: {
+          tls: {
+            rejectUnauthorized: false
+          }
+        }
+      }
+    },
     {
       resolve: "./src/modules/category-bundle-config",
     },
