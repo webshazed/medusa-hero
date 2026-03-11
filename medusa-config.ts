@@ -46,14 +46,14 @@ export default defineConfig({
   },
   modules: [
     {
-      resolve: "@medusajs/event-bus-redis",
+      resolve: "@medusajs/medusa/event-bus-redis",
       options: {
         redisUrl: REDIS_URL,
         redisOptions,
       },
     },
     {
-      resolve: "@medusajs/cache-redis",
+      resolve: "@medusajs/medusa/cache-redis",
       options: {
         redisUrl: REDIS_URL,
         redisOptions,
