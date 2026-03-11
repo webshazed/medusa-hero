@@ -96,7 +96,12 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
     ): Promise<InitiatePaymentOutput> {
         const { amount, currency_code, context } = input
 
-        const checkoutReference = `medusa_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
+        // Embed the Medusa payment session ID in the checkout reference
+        // so we can map back from SumUp webhooks to the correct Medusa session
+        const medusaSessionId = (input as any).data?.session_id || context?.idempotency_key || ""
+        const checkoutReference = `medusa__${medusaSessionId}__${Date.now()}`
+
+        this.logger_.info(`[SumUp] Creating checkout with reference: ${checkoutReference}, medusaSessionId: ${medusaSessionId}`)
 
         const storeUrls = (process.env.STORE_CORS || "http://localhost:8000").split(",")
         const storeUrl = process.env.STORE_URL || storeUrls[process.env.NODE_ENV === "production" ? storeUrls.length - 1 : 0]
@@ -379,7 +384,11 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
         }
 
         // Create a new checkout with the updated amount
-        const checkoutReference = `medusa_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
+        // Embed the Medusa payment session ID in the checkout reference
+        const medusaSessionId = (input as any).data?.session_id || ""
+        const checkoutReference = `medusa__${medusaSessionId}__${Date.now()}`
+
+        this.logger_.info(`[SumUp] Updating checkout with reference: ${checkoutReference}, medusaSessionId: ${medusaSessionId}`)
 
         const storeUrls = (process.env.STORE_CORS || "http://localhost:8000").split(",")
         const storeUrl = process.env.STORE_URL || storeUrls[process.env.NODE_ENV === "production" ? storeUrls.length - 1 : 0]
@@ -449,7 +458,23 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
     }
 
     /**
+     * Extract the Medusa payment session ID from our checkout reference.
+     * Format: medusa__{payses_xxx}__{timestamp}
+     */
+    private extractMedusaSessionId(checkoutReference: string): string | null {
+        if (!checkoutReference) return null
+        const parts = checkoutReference.split("__")
+        // parts[0] = "medusa", parts[1] = Medusa session ID, parts[2] = timestamp
+        if (parts.length >= 2 && parts[1]) {
+            return parts[1]
+        }
+        return null
+    }
+
+    /**
      * Handle SumUp webhooks to mark payments as authorized asynchronously.
+     * This is the critical safety net that ensures orders are created even
+     * if the storefront return page times out.
      */
     async getWebhookActionAndData(
         payload: { data: Record<string, unknown>; rawData: string | Buffer; headers: Record<string, unknown> }
@@ -469,16 +494,27 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
             const checkout = await this.sumupRequest<{
                 status: string
                 amount: number
+                checkout_reference: string
             }>(`/v0.1/checkouts/${checkoutId}`)
 
             const sumupStatus = checkout.status?.toUpperCase()
-            this.logger_.info(`[SumUp Webhook] Checkout ${checkoutId} status is ${sumupStatus}`)
+            this.logger_.info(`[SumUp Webhook] Checkout ${checkoutId} status: ${sumupStatus}, reference: ${checkout.checkout_reference}`)
+
+            // Extract the Medusa payment session ID from the checkout reference
+            const medusaSessionId = this.extractMedusaSessionId(checkout.checkout_reference)
+
+            if (!medusaSessionId) {
+                this.logger_.error(`[SumUp Webhook] Could not extract Medusa session ID from reference: ${checkout.checkout_reference}`)
+                return { action: "not_supported" }
+            }
+
+            this.logger_.info(`[SumUp Webhook] Mapped to Medusa session: ${medusaSessionId}`)
 
             if (sumupStatus === "PAID") {
                 return {
                     action: "authorized",
                     data: {
-                        session_id: checkoutId, // In SumUp provider, Medusa's session ID matches the checkout ID we returned
+                        session_id: medusaSessionId,
                         amount: checkout.amount,
                     },
                 }
@@ -488,7 +524,7 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
                 return {
                     action: "failed",
                     data: {
-                        session_id: checkoutId,
+                        session_id: medusaSessionId,
                         amount: checkout.amount,
                     },
                 }
