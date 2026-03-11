@@ -4,18 +4,21 @@ import fs from "fs"
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
+// Only enable TLS when URL is rediss:// (external). Render's internal redis:// does NOT use TLS.
+const REDIS_URL = process.env.REDIS_URL || ""
+const isTls = REDIS_URL.startsWith("rediss://")
+const redisOptions = {
+  family: 4,
+  connectTimeout: 20000,
+  keepAlive: 10000,
+  ...(isTls ? { tls: { rejectUnauthorized: false } } : {}),
+}
+
 export default defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
-    redisUrl: process.env.REDIS_URL,
-    redisOptions: {
-      family: 4,
-      connectTimeout: 20000,
-      keepAlive: 10000,
-      tls: {
-        rejectUnauthorized: false,
-      },
-    },
+    redisUrl: REDIS_URL,
+    redisOptions,
     databaseDriverOptions: {
       connection: { ssl: { rejectUnauthorized: false } },
       // Ensure the pool doesn't collapse under load
@@ -44,29 +47,15 @@ export default defineConfig({
     {
       resolve: "@medusajs/event-bus-redis",
       options: {
-        redisUrl: process.env.REDIS_URL,
-        redisOptions: {
-          family: 4,
-          connectTimeout: 20000,
-          keepAlive: 10000,
-          tls: {
-            rejectUnauthorized: false,
-          },
-        },
+        redisUrl: REDIS_URL,
+        redisOptions,
       },
     },
     {
       resolve: "@medusajs/cache-redis",
       options: {
-        redisUrl: process.env.REDIS_URL,
-        redisOptions: {
-          family: 4,
-          connectTimeout: 20000,
-          keepAlive: 10000,
-          tls: {
-            rejectUnauthorized: false,
-          },
-        },
+        redisUrl: REDIS_URL,
+        redisOptions,
       },
     },
     {
