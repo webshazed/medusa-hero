@@ -5,7 +5,8 @@ import fs from "fs"
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 // Only enable TLS when URL is rediss:// (external). Render's internal redis:// does NOT use TLS.
-const REDIS_URL = process.env.REDIS_URL || ""
+// We use a fallback URL so that `npx medusa build` doesn't crash when running without env vars.
+const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379"
 const isTls = REDIS_URL.startsWith("rediss://")
 const redisOptions = {
   family: 4,
