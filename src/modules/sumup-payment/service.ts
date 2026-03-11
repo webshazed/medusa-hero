@@ -98,6 +98,10 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
 
         const checkoutReference = `medusa_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
 
+        const storeUrls = (process.env.STORE_CORS || "http://localhost:8000").split(",")
+        const storeUrl = process.env.STORE_URL || storeUrls[process.env.NODE_ENV === "production" ? storeUrls.length - 1 : 0]
+        const returnUrl = `${storeUrl.replace(/\/$/, '')}/checkout/sumup-return`
+
         const checkout = await this.sumupRequest<{
             id: string
             checkout_reference: string
@@ -111,6 +115,7 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
                 currency: currency_code.toUpperCase(),
                 merchant_code: this.options_.merchant_code,
                 description: `Order payment`,
+                return_url: returnUrl,
                 hosted_checkout: {
                     enabled: true,
                 },
@@ -376,6 +381,10 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
         // Create a new checkout with the updated amount
         const checkoutReference = `medusa_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
 
+        const storeUrls = (process.env.STORE_CORS || "http://localhost:8000").split(",")
+        const storeUrl = process.env.STORE_URL || storeUrls[process.env.NODE_ENV === "production" ? storeUrls.length - 1 : 0]
+        const returnUrl = `${storeUrl.replace(/\/$/, '')}/checkout/sumup-return`
+
         const checkout = await this.sumupRequest<{
             id: string
             checkout_reference: string
@@ -389,6 +398,7 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
                 currency: currency_code.toUpperCase(),
                 merchant_code: this.options_.merchant_code,
                 description: `Order payment (updated)`,
+                return_url: returnUrl,
                 hosted_checkout: {
                     enabled: true,
                 },
@@ -439,13 +449,55 @@ class SumUpPaymentProviderService extends AbstractPaymentProvider<SumUpOptions> 
     }
 
     /**
-     * Handle SumUp webhooks (optional, can be expanded later).
+     * Handle SumUp webhooks to mark payments as authorized asynchronously.
      */
     async getWebhookActionAndData(
-        data: { data: Record<string, unknown>; rawData: string | Buffer; headers: Record<string, unknown> }
+        payload: { data: Record<string, unknown>; rawData: string | Buffer; headers: Record<string, unknown> }
     ): Promise<WebhookActionResult> {
-        return {
-            action: "not_supported",
+        const { data } = payload
+        const eventType = data.event_type as string
+        const checkoutId = data.id as string
+
+        this.logger_.info(`[SumUp Webhook] Processing event ${eventType} for checkout ${checkoutId}`)
+
+        if (eventType !== "CHECKOUT_STATUS_CHANGED" || !checkoutId) {
+            return { action: "not_supported" }
+        }
+
+        try {
+            // Verify checkout status directly with SumUp API
+            const checkout = await this.sumupRequest<{
+                status: string
+                amount: number
+            }>(`/v0.1/checkouts/${checkoutId}`)
+
+            const sumupStatus = checkout.status?.toUpperCase()
+            this.logger_.info(`[SumUp Webhook] Checkout ${checkoutId} status is ${sumupStatus}`)
+
+            if (sumupStatus === "PAID") {
+                return {
+                    action: "authorized",
+                    data: {
+                        session_id: checkoutId, // In SumUp provider, Medusa's session ID matches the checkout ID we returned
+                        amount: checkout.amount,
+                    },
+                }
+            }
+
+            if (sumupStatus === "FAILED") {
+                return {
+                    action: "failed",
+                    data: {
+                        session_id: checkoutId,
+                        amount: checkout.amount,
+                    },
+                }
+            }
+
+            return { action: "not_supported" }
+        } catch (error) {
+            this.logger_.error(`[SumUp Webhook] Error verifying checkout ${checkoutId}: ${error}`)
+            return { action: "not_supported" }
         }
     }
 }
