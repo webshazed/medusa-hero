@@ -41,7 +41,7 @@ export default defineConfig({
   },
   admin: {
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
-    path: "/app",
+    path: "/",
     backendUrl: process.env.BACKEND_URL || (process.env.NODE_ENV === "development" ? "http://localhost:9000" : "https://medusa-backend-xw2f.onrender.com"),
   },
   modules: [
