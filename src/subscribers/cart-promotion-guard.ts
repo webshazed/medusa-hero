@@ -29,6 +29,7 @@ export default async function cartPromotionGuardHandler({
                 "items.*",
                 "items.product.*",
                 "items.product.categories.*",
+                "items.adjustments.*",
                 "promotions.*",
             ],
             filters: {
@@ -42,7 +43,7 @@ export default async function cartPromotionGuardHandler({
         }
 
         // For each promotion on the cart, check if it has a category bundle config
-        const promoCodesToRemove: string[] = []
+        const promosToRemoveIds: string[] = []
 
         for (const promo of cart.promotions) {
             if (!promo) continue
@@ -84,20 +85,20 @@ export default async function cartPromotionGuardHandler({
 
             // If not enough items from the category, mark promotion for removal
             if (categoryItemCount < bundleConfig.min_quantity) {
-                if (promo.code) {
-                    promoCodesToRemove.push(promo.code)
+                if (promo.id) {
+                    promosToRemoveIds.push(promo.id)
                 }
             }
         }
 
         // Remove adjustments associated with promos that don't meet the requirement
-        if (promoCodesToRemove.length > 0) {
+        if (promosToRemoveIds.length > 0) {
             const adjustmentIds: string[] = []
 
             for (const item of cart.items || []) {
                 if (!item || !item.adjustments) continue
                 for (const adj of item.adjustments) {
-                    if (adj && promoCodesToRemove.includes(adj.code)) {
+                    if (adj && promosToRemoveIds.includes(adj.promotion_id)) {
                         adjustmentIds.push(adj.id)
                     }
                 }
