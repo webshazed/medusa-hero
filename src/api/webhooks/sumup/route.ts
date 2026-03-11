@@ -1,18 +1,18 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http";
-import { ContainerRegistrationKeys, Modules } from "@medusajs/framework/utils";
-import { IPaymentModuleService } from "@medusajs/framework/types";
+import { ContainerRegistrationKeys, Modules, PaymentWebhookEvents } from "@medusajs/framework/utils";
 
 /**
  * SumUp Webhook Handler
  * 
- * Forwards webhook notifications from SumUp to the Payment Module.
+ * Emits a payment.webhook_received event to be processed by Medusa's standard
+ * payment webhook handler.
  */
 export async function POST(
   req: MedusaRequest,
   res: MedusaResponse
 ) {
   const logger = req.scope.resolve(ContainerRegistrationKeys.LOGGER);
-  const paymentModule: IPaymentModuleService = req.scope.resolve(Modules.PAYMENT);
+  const eventBus = req.scope.resolve(Modules.EVENT_BUS);
   
   try {
     const body = req.body as Record<string, unknown>;
@@ -21,27 +21,31 @@ export async function POST(
 
     logger.info(`[SumUp Webhook] Received webhook event: ${event_type}, id: ${id}`);
 
-    // Process the event using the Payment Module
-    // This will trigger the provider's getWebhookActionAndData and update payment status
-    await paymentModule.processEvent({
-      providerId: "sumup",
-      payload: body,
-      headers: req.headers,
+    // Emit the standard Medusa payment webhook event
+    // This will be picked up by the payment-webhook subscriber and processed via workflow
+    await eventBus.emit({
+      name: PaymentWebhookEvents.WebhookReceived,
+      data: {
+        provider: "sumup",
+        payload: {
+          data: body,
+          rawData: (req as any).rawBody || JSON.stringify(body),
+          headers: req.headers,
+        },
+      },
     });
 
-    // Always respond with 200 status code to acknowledge receipt
     res.status(200).json({
       success: true,
-      message: "Webhook processed",
+      message: "Webhook event emitted",
     });
   } catch (error) {
-    logger.error(`[SumUp Webhook] Error processing webhook: ${error}`);
+    logger.error(`[SumUp Webhook] Error emitting webhook event: ${error}`);
     
-    // Return 200 even on error to prevent SumUp retries if we've already logged it
-    // SumUp will retry if status is non-2xx
+    // Always respond with 200 to acknowledge receipt to SumUp
     res.status(200).json({
       success: false,
-      message: "Webhook received but processing failed internally",
+      message: "Internal error occurred",
     });
   }
 }
