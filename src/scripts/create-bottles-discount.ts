@@ -24,40 +24,28 @@ export default async function createBottlesDiscount({ container }: ExecArgs) {
     if (existingPromotions.length > 0) {
         console.log(`\n🗑️  Deleting existing BOTTLES5 promotion (id: ${existingPromotions[0].id})...`)
         await promotionModuleService.deletePromotions([existingPromotions[0].id])
+        console.log("✅ Deletion complete.")
     }
 
-    console.log(`\n🎟️  Creating BOTTLES5 promotion (£5.00 fixed discount)...`)
+    console.log(`\n🎟️  Creating BOTTLES5 promotion (Standard, Manual)...`)
 
-    // Create a buyget promotion that natively demands 2+ items to trigger
-    const promotion = await promotionModuleService.createPromotions({
-        code: "BOTTLES5",
-        type: "buyget",
-        is_automatic: true, // Native engine can safely auto-apply it because it guards itself
-        status: "active",
-        buy_rules: [
-            {
-                attribute: "product_tags.id",
-                operator: "in",
-                values: ["ptag_01KK9T8AVF86E3JS096PYJSTSX"]
-            }
-        ],
-        buy_rules_min_quantity: 2,
-        application_method: {
-            type: "fixed",
-            target_type: "items",
-            allocation: "across_targets",
-            value: 5.00,
-            currency_code: "gbp",
-            apply_to_quantity: 999,
-            target_rules: [
-                {
-                    attribute: "product_tags.id",
-                    operator: "in",
-                    values: ["ptag_01KK9T8AVF86E3JS096PYJSTSX"]
-                }
-            ]
-        },
-    })
-
-    console.log(`\n✅ Successfully created promotion: BOTTLES5 (${promotion.id})`)
+    try {
+        const promotion = await promotionModuleService.createPromotions({
+            code: "BOTTLES5",
+            type: "standard",
+            is_automatic: false, // CRITICAL: This prevents Medusa's engine from overriding our subscriber
+            status: "active",
+            application_method: {
+                type: "fixed",
+                target_type: "order",
+                value: 5.00,
+                currency_code: "gbp",
+            },
+        })
+        console.log(`\n✅ Successfully created promotion: ${promotion.code} (${promotion.id})`)
+    } catch (err: any) {
+        console.error("\n❌ Failed to create promotion.")
+        console.error("Error message:", err.message)
+        throw err
+    }
 }
