@@ -22,22 +22,40 @@ export default async function createBottlesDiscount({ container }: ExecArgs) {
     })
 
     if (existingPromotions.length > 0) {
-        console.log(`\n⚠️  Promotion BOTTLES5 already exists (id: ${existingPromotions[0].id}). Skipping creation.`)
-        return
+        console.log(`\n🗑️  Deleting existing BOTTLES5 promotion (id: ${existingPromotions[0].id})...`)
+        await promotionModuleService.deletePromotions([existingPromotions[0].id])
     }
 
     console.log(`\n🎟️  Creating BOTTLES5 promotion (£5.00 fixed discount)...`)
 
-    // Create a standard promotion with application method "fixed"
+    // Create a buyget promotion that natively demands 2+ items to trigger
     const promotion = await promotionModuleService.createPromotions({
         code: "BOTTLES5",
-        type: "standard",
-        is_automatic: true,
+        type: "buyget",
+        is_automatic: true, // Native engine can safely auto-apply it because it guards itself
+        status: "active",
+        buy_rules: [
+            {
+                attribute: "product_tags.id",
+                operator: "in",
+                values: ["ptag_01KK9T8AVF86E3JS096PYJSTSX"]
+            }
+        ],
+        buy_rules_min_quantity: 2,
         application_method: {
             type: "fixed",
-            target_type: "order",
-            value: 5.00, // £5.00 discount
+            target_type: "items",
+            allocation: "across_targets",
+            value: 5.00,
             currency_code: "gbp",
+            apply_to_quantity: 999,
+            target_rules: [
+                {
+                    attribute: "product_tags.id",
+                    operator: "in",
+                    values: ["ptag_01KK9T8AVF86E3JS096PYJSTSX"]
+                }
+            ]
         },
     })
 
