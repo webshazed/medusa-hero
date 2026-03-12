@@ -25,3 +25,11 @@ build
 
 .medusa
 .vercel
+
+# Temp files
+*.sql
+*.log
+extracted_orders.json
+extracted_orders_summary.json
+mapped_orders.json
+logo svg.svg

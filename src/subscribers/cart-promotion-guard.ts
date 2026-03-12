@@ -3,6 +3,8 @@ import type {
     SubscriberConfig,
 } from "@medusajs/framework"
 import { ContainerRegistrationKeys, Modules } from "@medusajs/framework/utils"
+import { updateCartPromotionsWorkflow } from "@medusajs/core-flows"
+import { PromotionActions } from "@medusajs/framework/utils"
 
 /**
  * Cart Promotion Guard Subscriber
@@ -43,7 +45,7 @@ export default async function cartPromotionGuardHandler({
         }
 
         // For each promotion on the cart, check if it has a category bundle config
-        const promosToRemoveIds: string[] = []
+        const promosToRemoveCodes: string[] = []
 
         for (const promo of cart.promotions) {
             if (!promo) continue
@@ -85,28 +87,21 @@ export default async function cartPromotionGuardHandler({
 
             // If not enough items from the category, mark promotion for removal
             if (categoryItemCount < bundleConfig.min_quantity) {
-                if (promo.id) {
-                    promosToRemoveIds.push(promo.id)
+                if (promo.code) {
+                    promosToRemoveCodes.push(promo.code)
                 }
             }
         }
 
-        // Remove adjustments associated with promos that don't meet the requirement
-        if (promosToRemoveIds.length > 0) {
-            const adjustmentIds: string[] = []
-
-            for (const item of cart.items || []) {
-                if (!item || !item.adjustments) continue
-                for (const adj of item.adjustments) {
-                    if (adj && promosToRemoveIds.includes(adj.promotion_id)) {
-                        adjustmentIds.push(adj.id)
-                    }
+        // Completely remove promos from the cart that don't meet the requirement
+        if (promosToRemoveCodes.length > 0) {
+            await updateCartPromotionsWorkflow(container).run({
+                input: {
+                    cart_id: cartId,
+                    promo_codes: promosToRemoveCodes,
+                    action: PromotionActions.REMOVE
                 }
-            }
-
-            if (adjustmentIds.length > 0) {
-                await cartService.softDeleteLineItemAdjustments(adjustmentIds)
-            }
+            })
         }
     } catch (error) {
         console.error("Error in cart promotion guard:", error)
